@@ -6,6 +6,7 @@ import {
   GetAgentUseCase,
   ListAgentsUseCase,
   DeleteAgentUseCase,
+  UpdateAgentUseCase,
 } from '../../application';
 import { AgentRepository } from '../../domain';
 import {
@@ -35,6 +36,14 @@ export namespace AGENT_PROVIDERS {
       provide: CreateAgentUseCase.UseCase,
       useFactory: (agentRepo: AgentRepository.Repository) => {
         return new CreateAgentUseCase.UseCase(agentRepo);
+      },
+      inject: [REPOSITORIES.AGENT_REPOSITORY.provide],
+    };
+
+    export const UPDATE_AGENT_USE_CASE = {
+      provide: UpdateAgentUseCase.UseCase,
+      useFactory: (agentRepo: AgentRepository.Repository) => {
+        return new UpdateAgentUseCase.UseCase(agentRepo);
       },
       inject: [REPOSITORIES.AGENT_REPOSITORY.provide],
     };

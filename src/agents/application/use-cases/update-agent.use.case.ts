@@ -1,35 +1,52 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import { UseCase as DefaultUseCase } from '../../../common';
-import { AgentRepository } from '../../domain';
+import { AgentRepository, HANDLE_MODE } from '../../domain';
 import { AgentOutputMapper, AgentOutput } from '../dto/agent.output';
 
-export namespace UpdateAccountantUseCase {
+export namespace UpdateAgentUseCase {
   export class UseCase implements DefaultUseCase<Input, Output> {
     constructor(private agenteRepo: AgentRepository.Repository) {}
 
     async execute(input: Input): Promise<Output> {
       const entity = await this.agenteRepo.findById(input.id);
 
-      //entity.update(input);
+      entity.update(input);
 
-      const result = await this.agenteRepo.update(entity);
-      if (result) return result;
+      await this.agenteRepo.update(entity);
 
       return AgentOutputMapper.toOutput(entity);
     }
   }
 
   export type Input = {
-    name: string;
-    cpf?: string;
-    cnpj?: string;
-    phone?: string;
     id: string;
-    isActive: boolean;
-    cellPhone: string;
+    name: string;
+    login: string;
+    medias?: {
+      voice: {
+        min: number;
+        max: number;
+        selected: number;
+        handleMode: HANDLE_MODE;
+        device: string;
+        devicePassword: string;
+      };
+      email?: {
+        min: number;
+        max: number;
+        selected: number;
+      };
+      chat?: {
+        min: number;
+        max: number;
+        selected: number;
+        handleMode: HANDLE_MODE;
+      };
+    };
+    password: string;
   };
 
-  export type Output = AgentOutput | string;
+  export type Output = AgentOutput;
 }
 
-export default UpdateAccountantUseCase;
+export default UpdateAgentUseCase;

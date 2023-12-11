@@ -6,16 +6,18 @@ import {
   Injectable,
   Param,
   HttpCode,
-  ParseUUIDPipe,
   Delete,
+  Put,
 } from '@nestjs/common';
 import {
   CreateAgentUseCase,
   GetAgentUseCase,
   ListAgentsUseCase,
   DeleteAgentUseCase,
+  UpdateAgentUseCase,
 } from '../../application';
 import { CreateAgentDto } from './dto/create-agent.dto';
+import { UpdateAgentDto } from './dto/update-agent.dto';
 import { AgentPresenter } from './agent.presenter';
 import { AgentOutput } from '../../application/dto/agent.output';
 
@@ -27,6 +29,7 @@ export class AgentController {
     private readonly getUseCase: GetAgentUseCase.UseCase,
     private readonly createUseCase: CreateAgentUseCase.UseCase,
     private readonly deleteUseCase: DeleteAgentUseCase.UseCase,
+    private readonly updateUseCase: UpdateAgentUseCase.UseCase,
   ) {}
 
   @Get()
@@ -44,6 +47,18 @@ export class AgentController {
   @Post()
   async create(@Body() createAgentDto: CreateAgentDto) {
     const output = await this.createUseCase.execute(createAgentDto);
+    return AgentController.AgentPresenterToResponse(output);
+  }
+
+  @Put(':id') //PUT vs PATCH
+  async update(
+    @Param('id') id: string,
+    @Body() updateAgentDto: UpdateAgentDto,
+  ) {
+    const output = await this.updateUseCase.execute({
+      id,
+      ...updateAgentDto,
+    });
     return AgentController.AgentPresenterToResponse(output);
   }
 
