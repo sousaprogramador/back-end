@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../../src/app.module';
 
-describe('AppController (e2e)', () => {
+describe('AgentController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/healthy (GET)', () => {
-    return request(app.getHttpServer()).get('/healthy').expect(200);
+  it('/public/agent (GET)', () => {
+    return request(app.getHttpServer()).get('/public/agent').expect(200);
   });
 });

@@ -30,7 +30,7 @@ export class AgentPresenter {
     this.name = output.name;
     this.login = output.login;
     this.medias = output.medias;
-    this.password = output.name;
+    this.password = output.password;
   }
 }
 
