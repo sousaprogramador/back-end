@@ -5,7 +5,10 @@
 - http://localhost:3333/docs
 
 ```
-docker-compose up
+docker-compose up -d
+
+npm install
+npm start dev
 
 ```
 
