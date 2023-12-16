@@ -1,3 +1,56 @@
+[![alt text](./public/img/hexagonal.jpg)]
+
+> ## EXECUCAO
+
+- http://localhost:3333/docs
+
+```
+docker-compose up
+
+```
+
+> ## Princípios
+
+- Single Responsibility Principle (SRP)
+- Open Closed Principle (OCP)
+- Liskov Substitution Principle (LSP)
+- Interface Segregation Principle (ISP)
+- Dependency Inversion Principle (DIP)
+
+> ## Metodologias e Designs
+
+- TDD
+- Clean Architecture
+- DDD
+- GitFlow
+- Use Cases
+
+> ## Bibliotecas e Ferramentas
+
+- NPM
+- Typescript
+- Git
+- Docker
+- Jest
+- Mongoose
+- MongoDB
+- SuperTest
+
+> ## Features do Typescript
+
+- POO Avançado
+- Interface
+- Utility Types
+- Build
+- Deploy
+- Uso de Breakpoints
+
+> ## Features de Testes
+
+- Testes Unitários
+- Testes de Integração
+- Cobertura de Testes
+
 - [Desafio Back-end](#desafio-back-end)
   - [Ações que o servidor poderá ter](#ações-que-o-servidor-poderá-ter)
   - [Entrega](#entrega)
@@ -15,7 +68,6 @@ Este servidor deverá:
 - Este servidor deve seguir a [API](openapi.yml).
 - Todos os métodos da API deverão ser implementados.
 - Os agentes deverão ser inseridos em arquivo no formato json.
-
 
 ## Itens adicionais que o servidor poderá ter
 
