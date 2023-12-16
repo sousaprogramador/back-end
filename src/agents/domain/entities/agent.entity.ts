@@ -3,6 +3,7 @@ export enum HANDLE_MODE {
 }
 
 export type AgentProperties = {
+  id?: string;
   name: string;
   login: string;
   medias?: {
@@ -39,6 +40,14 @@ export class Agent {
     this.login = props.login;
     this.medias = props.medias;
     this.password = props.password;
+  }
+
+  get id() {
+    return this.props.id;
+  }
+
+  private set id(value) {
+    this.props.id = value;
   }
 
   get name() {
